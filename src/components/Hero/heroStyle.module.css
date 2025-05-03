@@ -1,0 +1,139 @@
+.hero {
+  position: relative;
+  background-image: url("/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.textSection {
+  flex: 3;
+  padding-right: 2rem;
+  padding-left: 4rem;
+}
+
+.title {
+  color: white;
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.control {
+  display: flex;
+  gap: 1rem;
+}
+
+.control button {
+  flex: 1;
+}
+
+.carouselContainer {
+  flex: 1;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.carouselContent {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.carouselTitle {
+  color: #2c3e50;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.carouselDescription {
+  color: #34495e;
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.carouselButtonContainer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .textSection {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .imagePlaceholder {
+    height: 250px;
+    margin-top: 2rem;
+  }
+}
+
+.carouselContainer {
+  flex: 1;
+  padding: 2rem;
+  @media (max-width: 992px) {
+    flex: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .imagePlaceholder {
+    height: 200px;
+  }
+}
