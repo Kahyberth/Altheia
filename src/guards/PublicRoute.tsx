@@ -6,8 +6,11 @@ import { type ReactNode } from "react";
 
 export default function PublicRoute({ children }: { children: ReactNode }) {
   const { isAuthenticated } = useContext(AuthContext);
+
+  console.log("isAuthenticated", isAuthenticated);
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
   }
+
   return children;
 }

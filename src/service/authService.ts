@@ -3,7 +3,7 @@ import apiClient from "@/api/apiClient";
 export const verifyToken = async () => {
   const { data } = await apiClient.get("/auth/verify-token");
   console.log("data", data);
-  return data;
+  return data.userInfo;
 };
 
 export const logoutRequest = async () => {

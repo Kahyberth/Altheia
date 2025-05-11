@@ -1,4 +1,4 @@
-import type { RegisterCredentials } from "@/context/AuthContext";
+import type { RegisterCredentials, UserData } from "@/context/AuthContext";
 import {
   useCallback,
   useEffect,
@@ -24,6 +24,7 @@ interface ErrorResponse {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [user, setUser] = useState<UserData | null>(null);
 
   const verifyUser = async () => {
     try {
@@ -32,8 +33,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
       setIsAuthenticated(true);
+      console.log("res", res);
+      setUser(res);
     } catch {
+      console.log("No esta autenticado");
       setIsAuthenticated(false);
+      setUser(null);
     } finally {
       setIsLoading(false);
     }
@@ -46,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         notifications.show({
           title: "Welcome back!",
-          message: `Hello 🌟`,
+          message: `Hello ${user?.name} 🌟`,
           color: "green",
           autoClose: 2000,
         });
@@ -75,6 +80,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(async () => {
     await logoutRequest();
     setIsAuthenticated(false);
+    setUser(null);
   }, []);
 
   const register = useCallback(async (credentials: RegisterCredentials) => {
@@ -110,8 +116,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isAuthenticated,
       loading: isLoading,
       profileLoading: isLoading,
+      user,
     }),
-    [isLoading, logout, login, register, isAuthenticated]
+    [isLoading, logout, login, register, isAuthenticated, user]
   );
 
   if (isLoading) {

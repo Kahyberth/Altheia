@@ -10,6 +10,14 @@ export interface RegisterCredentials {
   gender: string;
 }
 
+export interface UserData {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  avatar: string;
+}
+
 export interface AuthContextType {
   isAuthenticated: boolean;
   login: (credentials: {
@@ -22,6 +30,7 @@ export interface AuthContextType {
   ) => Promise<{ success: boolean; error?: string | null }>;
   loading: boolean;
   profileLoading: boolean;
+  user: UserData | null;
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -31,4 +40,5 @@ export const AuthContext = createContext<AuthContextType>({
   register: async () => ({ success: false }),
   isAuthenticated: false,
   profileLoading: true,
+  user: null,
 });
