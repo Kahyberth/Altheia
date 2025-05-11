@@ -18,7 +18,7 @@ const navItems = [
     label: "Consultar medicamentos",
     href: "/patient-results",
   },
-  { icon: User, label: "Perfil", href: "/patient-profile" },
+  { icon: User, label: "Perfil", href: "profile" },
   { icon: Settings, label: "Configuración", href: "/patient-settings" },
   { icon: LogOut, label: "Sair", href: "/logout" },
 ];

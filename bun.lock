@@ -39,6 +39,7 @@
         "react-hook-form": "^7.56.3",
         "react-router": "^7.6.0",
         "react-router-dom": "^7.6.0",
+        "sonner": "^2.0.3",
         "tabler": "^1.0.0-alpha.8",
         "tailwind-merge": "^3.2.0",
         "tailwindcss": "^4.1.6",
@@ -922,6 +923,8 @@
     "sifter": ["sifter@0.5.4", "", { "dependencies": { "async": "^2.6.0", "cardinal": "^1.0.0", "csv-parse": "^4.6.5", "humanize": "^0.0.9", "optimist": "^0.6.1" }, "bin": { "sifter": "./bin/sifter.js" } }, "sha512-t2yxTi/MM/ESup7XH5oMu8PUcttlekt269RqxARgnvS+7D/oP6RyA1x3M/5w8dG9OgkOyQ8hNRWelQ8Rj4TAQQ=="],
 
     "skip-regex": ["skip-regex@1.0.2", "", {}, "sha512-pEjMUbwJ5Pl/6Vn6FsamXHXItJXSRftcibixDmNCWbWhic0hzHrwkMZo0IZ7fMRH9KxcWDFSkzhccB4285PutA=="],
+
+    "sonner": ["sonner@2.0.3", "", { "peerDependencies": { "react": "^18.0.0 || ^19.0.0 || ^19.0.0-rc", "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-rc" } }, "sha512-njQ4Hht92m0sMqqHVDL32V2Oun9W1+PHO9NDv9FHfJjT3JT22IG4Jpo3FPQy+mouRKCXFWO+r67v6MrHX2zeIA=="],
 
     "source-map-js": ["source-map-js@1.2.1", "", {}, "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="],
 

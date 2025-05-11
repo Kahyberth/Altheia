@@ -1,5 +1,6 @@
 import RequestAppointmentPage from "@/components/Dashboard/patient/request-appointment";
 import PatientDashboardPage from "@/pages/patient-dashboard-page";
+import PatientProfilePage from "@/pages/patient-profile-page";
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
@@ -10,6 +11,7 @@ import {
 import PublicRoute from "./guards/PublicRoute";
 import Layout from "./layout/layout";
 import LandingPage from "./pages/landing-page";
+
 function App() {
   const { user } = useContext(AuthContext);
 
@@ -69,6 +71,7 @@ function App() {
       >
         <Route index element={<PatientDashboardPage />} />
         <Route path="appointments" element={<RequestAppointmentPage />} />
+        <Route path="profile" element={<PatientProfilePage />} />
       </Route>
     </Routes>
   );
