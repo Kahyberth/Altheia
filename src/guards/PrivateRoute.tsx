@@ -17,8 +17,6 @@ export default function ProtectedRoute({
   const { isAuthenticated, loading, user } = useContext(AuthContext);
   const location = useLocation();
 
-  console.log("user", user);
-
   if (loading) {
     return (
       <div

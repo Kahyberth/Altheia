@@ -1,5 +1,4 @@
-import NavbarMinimal from "@/components/Dashboard/navbar";
-import PatientNavbar from "@/components/Dashboard/patient/navbar";
+import Navbar from "@/components/Dashboard/navbar";
 import { AuthContext } from "@/context/AuthContext";
 import type { ReactNode } from "react";
 import { useContext } from "react";
@@ -11,10 +10,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const { user } = useContext(AuthContext) || {};
-  const role = user?.role;
+  const role = user?.role as "patient" | "staff";
   return (
     <div className="flex min-h-screen">
-      {role === "patient" ? <PatientNavbar /> : <NavbarMinimal />}
+      <Navbar role={role} />
       <div className="flex-1 h-full">{children || <Outlet />}</div>
     </div>
   );

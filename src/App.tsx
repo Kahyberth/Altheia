@@ -10,7 +10,11 @@ import {
 } from "./guards/PrivateRoute";
 import PublicRoute from "./guards/PublicRoute";
 import Layout from "./layout/layout";
+import StaffPage from "./pages/clinic-owner-page";
+import ClinicRegisterPage from "./pages/clinic-register-page";
 import LandingPage from "./pages/landing-page";
+import StaffDashboardPage from "./pages/staff-dashboard-page";
+import SuccessPage from "./pages/sucess-page";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -24,8 +28,8 @@ function App() {
         return <Navigate to="/physician/dashboard" />;
       case "patient":
         return <Navigate to="/patient/dashboard" />;
-      case "admin":
-        return <Navigate to="/admin/dashboard" />;
+      case "staff":
+        return <Navigate to="/staff/dashboard" />;
       case "secretary":
         return <Navigate to="/secretary/dashboard" />;
       case "superadmin":
@@ -45,11 +49,26 @@ function App() {
             <LandingPage />
           </PublicRoute>
         }
-      >
-        <Route path="/features" element={<div>Features Content</div>} />
-        <Route path="/about" element={<div>About Content</div>} />
-        <Route path="/contact" element={<div>Contact Content</div>} />
-      </Route>
+      />
+      <Route
+        path="/register-clinic"
+        element={
+          <PublicRoute>
+            <ClinicRegisterPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register-clinic/success"
+        element={
+          <PublicRoute>
+            <SuccessPage />
+          </PublicRoute>
+        }
+      />
+      <Route path="/features" element={<div>Features Content</div>} />
+      <Route path="/about" element={<div>About Content</div>} />
+      <Route path="/contact" element={<div>Contact Content</div>} />
 
       {/* Rutas protegidas */}
       <Route
@@ -60,6 +79,18 @@ function App() {
           </PrivateRoute>
         }
       />
+
+      <Route
+        path="/staff/dashboard"
+        element={
+          <ProtectedRoute role="staff">
+            <Layout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<StaffDashboardPage />} />
+        <Route path="staff-management" element={<StaffPage />} />
+      </Route>
 
       <Route
         path="/patient/dashboard"

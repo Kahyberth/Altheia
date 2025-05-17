@@ -2,7 +2,6 @@ import apiClient from "@/api/apiClient";
 
 export const verifyToken = async () => {
   const { data } = await apiClient.get("/auth/verify-token");
-  console.log("data", data);
   return data.userInfo;
 };
 
@@ -15,12 +14,11 @@ export const loginRequest = async (credentials: {
   password: string;
 }) => {
   const { data } = await apiClient.post("/auth/login", credentials);
-  console.log("data", data);
   return data;
 };
 
 export const registerRequest = async (credentials: any) => {
-  const { data } = await apiClient.post("/auth/register", credentials);
+  const { data } = await apiClient.post("/patient/register", credentials);
   return data;
 };
 

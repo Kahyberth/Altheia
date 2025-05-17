@@ -33,7 +33,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
       setIsAuthenticated(true);
-      console.log("res", res);
       setUser(res);
     } catch {
       console.log("No esta autenticado");
@@ -86,7 +85,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = useCallback(async (credentials: RegisterCredentials) => {
     try {
       setIsLoading(true);
-      const response = await apiClient.post("/auth/register", credentials);
+      const response = await apiClient.post("/patient/register", credentials);
 
       if (response.status === 200) {
         return { success: true };
