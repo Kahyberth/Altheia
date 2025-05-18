@@ -15,6 +15,12 @@ import ClinicRegisterPage from "./pages/clinic-register-page";
 import LandingPage from "./pages/landing-page";
 import StaffDashboardPage from "./pages/staff-dashboard-page";
 import SuccessPage from "./pages/sucess-page";
+import ReceptionistPage from "./pages/Receptionist/receptionist-page";
+import AppointmentManagement from "./pages/Receptionist/appointment-management";
+import AppointmentPage from "./pages/Receptionist/appointment-management";
+import NewAppointmentPage from "./components/Dashboard/receptionist/appointment/new-appointment";
+import PatientsPage from "./pages/Receptionist/patients-management";
+import LabResultsPage from "./pages/Receptionist/lab-results";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -30,8 +36,8 @@ function App() {
         return <Navigate to="/patient/dashboard" />;
       case "staff":
         return <Navigate to="/staff/dashboard" />;
-      case "secretary":
-        return <Navigate to="/secretary/dashboard" />;
+      case "receptionist":
+        return <Navigate to="/receptionist/dashboard" />;
       case "superadmin":
         return <Navigate to="/superadmin/dashboard" />;
       default:
@@ -90,6 +96,21 @@ function App() {
       >
         <Route index element={<StaffDashboardPage />} />
         <Route path="staff-management" element={<StaffPage />} />
+      </Route>
+
+      <Route
+        path="/receptionist/dashboard"
+        element={
+          <ProtectedRoute role="receptionist">
+            <Layout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<ReceptionistPage />} />
+        <Route path="appointment-management" element={<AppointmentPage />} />
+        <Route path="appointment-management/new" element={<NewAppointmentPage />} />
+        <Route path="patients-management" element={<PatientsPage />} />
+        <Route path="lab-results" element={<LabResultsPage />} />
       </Route>
 
       <Route

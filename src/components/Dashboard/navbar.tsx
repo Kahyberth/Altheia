@@ -3,10 +3,12 @@ import type { LucideIcon } from "lucide-react";
 import {
   BarChart3,
   Calendar,
+  FlaskConical,
   LayoutDashboard,
   LogOut,
   Settings,
   User,
+  UsersRound,
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,7 +19,7 @@ type NavItem = {
   href: string;
 };
 
-type Role = "patient" | "staff";
+type Role = "patient" | "staff" | "receptionist";
 
 export default function Navbar({ role }: { role: Role }) {
   const [activeItem, setActiveItem] = useState("Dashboard");
@@ -47,7 +49,28 @@ export default function Navbar({ role }: { role: Role }) {
         {
           icon: BarChart3,
           label: "Gestion de pacientes",
-          href: "patient-management",
+          href: "patients-management",
+        },
+        { icon: User, label: "Perfil de la clinica", href: "profile" },
+        { icon: Settings, label: "Configuración", href: "/patient-settings" },
+        { icon: LogOut, label: "Sair", href: "/logout" },
+      ],
+      receptionist: [
+        { icon: LayoutDashboard, label: "Dashboard", href: "/" },
+        {
+          icon: Calendar,
+          label: "Gestion de citas",
+          href: "appointment-management",
+        },
+        {
+          icon: UsersRound,
+          label: "Gestion de pacientes",
+          href: "patients-management",
+        },
+        {
+          icon: FlaskConical,
+          label: "Resultados de laboratorio",
+          href: "lab-results",
         },
         { icon: User, label: "Perfil de la clinica", href: "profile" },
         { icon: Settings, label: "Configuración", href: "/patient-settings" },

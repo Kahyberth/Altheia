@@ -10,7 +10,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const { user } = useContext(AuthContext) || {};
-  const role = user?.role as "patient" | "staff";
+  const role = user?.role as "patient" | "staff" | "receptionist";
   return (
     <div className="flex min-h-screen">
       <Navbar role={role} />
