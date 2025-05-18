@@ -1,5 +1,7 @@
+import AnimatedBackground from "@/components/Hero/animated-background";
 import FeaturesSection from "@/components/Hero/features-section";
-import HeroCtaSection from "@/components/Hero/hero-cta-section";
+import FloatingNavigation from "@/components/Hero/floating-navigation";
+import CTASection from "@/components/Hero/hero-cta-section";
 import HeroFooter from "@/components/Hero/hero-footer";
 import HeroHeader from "@/components/Hero/hero-header";
 import HeroSection from "@/components/Hero/hero-section";
@@ -8,7 +10,10 @@ import TrustedSection from "@/components/Hero/trusted-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+      <AnimatedBackground />
+      <FloatingNavigation />
+
       {/* Header */}
       <HeroHeader />
 
@@ -17,7 +22,6 @@ export default function Home() {
 
       {/* Trusted By Section */}
       <TrustedSection />
-
       {/* Features Section */}
       <FeaturesSection />
 
@@ -25,8 +29,7 @@ export default function Home() {
       <HowItWorks />
 
       {/* CTA Section */}
-      <HeroCtaSection />
-
+      <CTASection />
       {/* Footer */}
       <HeroFooter />
     </div>

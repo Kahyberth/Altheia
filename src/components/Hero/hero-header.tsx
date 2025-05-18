@@ -1,42 +1,61 @@
-import AuthModal from "@/components/auth/auth-modal";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import AuthModal from "../auth/auth-modal";
 import { Button } from "../ui/button";
 
 export default function HeroHeader() {
   const [isAuthOpen, setAuthOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center gap-2">
-          <div className="size-14 rounded-lg bg-gradient-to-br p-1.5">
-            <img src="/img/logo.png" alt="Altheia" className="size-full" />
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
+        <div className="flex items-center gap-3">
+          <div className="relative size-10 overflow-hidden rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 p-2 shadow-lg shadow-violet-500/20">
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-600/80 to-indigo-600/80 opacity-80"></div>
+            <div className="relative size-full rounded-md bg-white"></div>
           </div>
-          <span className="text-xl font-bold text-slate-900">Altheia</span>
+          <span className="bg-gradient-to-r from-violet-700 to-indigo-600 bg-clip-text text-2xl font-bold text-transparent">
+            Altheia
+          </span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700 hover:text-slate-900">
-          <Link
-            to="#features"
-            className="text-sm font-medium text-slate-700 hover:text-slate-900"
+        <nav className="hidden md:flex items-center gap-8">
+          <a
+            href="#features"
+            className="group relative text-sm font-medium text-slate-700 transition-colors hover:text-violet-700"
           >
             Características
-          </Link>
-          <Link
-            to="#how-it-works"
-            className="text-sm font-medium text-slate-700 hover:text-slate-900"
+            <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a
+            href="#how-it-works"
+            className="group relative text-sm font-medium text-slate-700 transition-colors hover:text-violet-700"
           >
             Cómo funciona
-          </Link>
+            <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a
+            href="#pricing"
+            className="group relative text-sm font-medium text-slate-700 transition-colors hover:text-violet-700"
+          >
+            Precios
+            <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a
+            href="#testimonials"
+            className="group relative text-sm font-medium text-slate-700 transition-colors hover:text-violet-700"
+          >
+            Testimonios
+            <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
         </nav>
 
         <div className="flex items-center gap-3">
           <Button
             size="sm"
-            className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
+            className="relative overflow-hidden bg-gradient-to-r from-violet-600 to-indigo-600 font-medium transition-all hover:shadow-lg hover:shadow-violet-500/20"
             onClick={() => setAuthOpen(true)}
           >
-            Iniciar sesión
+            <span className="relative z-10">Iniciar sesión</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-violet-700 to-indigo-700 opacity-0 transition-opacity hover:opacity-100"></span>
           </Button>
           <Button variant="ghost" size="icon" className="md:hidden">
             <span className="sr-only">Toggle menu</span>
@@ -59,11 +78,7 @@ export default function HeroHeader() {
           </Button>
         </div>
       </div>
-      <AuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setAuthOpen(false)}
-        defaultTab="login"
-      />
+      <AuthModal isOpen={isAuthOpen} onClose={() => setAuthOpen(false)} />
     </header>
   );
 }
