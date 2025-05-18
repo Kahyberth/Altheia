@@ -10,9 +10,8 @@ import {
 } from "./guards/PrivateRoute";
 import PublicRoute from "./guards/PublicRoute";
 import Layout from "./layout/layout";
-import StaffPage from "./pages/clinic-owner-page";
-import ClinicRegisterPage from "./pages/clinic-register-page";
-import LandingPage from "./pages/landing-page";
+import { ClinicRegisterPage } from "./pages/clinic-register-page";
+import Home from "./pages/hero-page";
 import StaffDashboardPage from "./pages/staff-dashboard-page";
 import SuccessPage from "./pages/sucess-page";
 import ReceptionistPage from "./pages/Receptionist/receptionist-page";
@@ -52,7 +51,7 @@ function App() {
         path="/"
         element={
           <PublicRoute>
-            <LandingPage />
+            <Home />
           </PublicRoute>
         }
       />
@@ -60,7 +59,7 @@ function App() {
         path="/register-clinic"
         element={
           <PublicRoute>
-            <ClinicRegisterPage />
+            <ClinicRegisterPage onSubmit={() => {}} />
           </PublicRoute>
         }
       />
@@ -95,7 +94,6 @@ function App() {
         }
       >
         <Route index element={<StaffDashboardPage />} />
-        <Route path="staff-management" element={<StaffPage />} />
       </Route>
 
       <Route
